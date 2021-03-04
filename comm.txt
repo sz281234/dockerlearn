@@ -1,0 +1,11 @@
+docker network create sales --driver bridge
+
+docker image pull redis:alpine 
+
+docker image pull russmckendrick/moby-counter
+
+docker container run -d --name redis --network sales redis:alpine
+
+docker container run -d --name moby-counter --network sales -p 8000:80 russmckendrick/moby-counter
+
+
